@@ -1,0 +1,25 @@
+{
+  "name": "calendar-service",
+  "version": "1.0.0",
+  "description": "heirfhg",
+  "main": "setup.js",
+  "dependencies": {
+    "mysql2": "^1.5.3",
+    "uuid": "^3.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "service.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Team-WhiteWolf/calendar-service.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Team-WhiteWolf/calendar-service/issues"
+  },
+  "homepage": "https://github.com/Team-WhiteWolf/calendar-service#readme"
+}
