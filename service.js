@@ -147,32 +147,42 @@ function getAppointmentEndDate(appointmentId) {
     });
 }
 
-function createUserAppointment() {
-
+function createUserAppointment(userId, appointmentId, state) {
+    var sql = "INSERT INTO UserAppointment (userId, appointmentId, state) VALUES (?, ?, ?)";
+    var values = [userId, appointmentId, state];
+    conn.query(sql, values, function (err, results, fields) {
+        if (err) throw err;
+    });
 }
-function userAppointmentState() {
-
+function getuserAppointmentState(userAppointmentId) {
+    var sql = "SELECT state FROM UserAppointment WHERE id == " + userAppointmentId;
+    conn.query(sql, function (err, results, fields) {
+        if (err) {
+            throw err;
+        } else {
+            send(result);
+        }
+    });
 }
-function getCalendarname() {
-
+function setUserAppointmentState(userId, appointmentId, state) {
+    var sql = "INSERT INTO UserAppointment (userAppointmentId, userId, appointmentId, state) VALUES (?, ?, ?, ?)";
+    var values = [uuidv4, userId, appointmentId, state];
+    conn.query(sql, values, function (err, results, fields) {
+        if (err) throw err;
+    });
+}
+function getCalendarname(calendarId) {
+var sql = "SELECT name FROM Calendar WHERE id == " + calendarId;
+conn.query(sql, function (err, results, fields) {
+    if (err) {
+        throw err;
+    } else {
+        send(result);
+    }
+});
 }
 function getCalendardescription() {
-
-}
-
-
-
-
-function addIssueMilestone(issueId, milestoneId) {
-    var sql = "INSERT INTO IssueMilestone (issueId, milestoneId) VALUES (?, ?)";
-    var values = [issueId, milestoneId];
-
-    conn.query(sql, values, function (err, results, fields) {
-        if (err) throw err;
-    });
-}
-function getIssueIdMilestone(milestoneId) {
-    var sql = "SELECT issueId FROM IssueMilestone WHERE milestoneId == " + milestoneId;
+    var sql = "SELECT description FROM Calendar WHERE id == " + calendarId;
     conn.query(sql, function (err, results, fields) {
         if (err) {
             throw err;
@@ -181,81 +191,7 @@ function getIssueIdMilestone(milestoneId) {
         }
     });
 }
-function removeIssueMilestone(issueId, milestoneId) {
-    var sql = "DELETE FROM IssueMilestone WHERE issueId == " + issueId + " AND milestoneId == " + milestoneId;
 
-    conn.query(sql, function (err, results, fields) {
-        if (err) throw err;
-    });
-}
-
-function createMilestone(projectId) {
-    var sql = "INSERT INTO Milestone (id, projectId) VALUES (?, ?);";
-    var values = [uuidv4, projectId];
-
-    conn.query(sql, values, function (err, results, fields) {
-        if (err) throw err;
-    });
-}
-function removeMilestone(milestoneId) {
-    var sql = "DELETE FROM Milestone WHERE milestoneId == " + milestoneId;
-
-    conn.query(sql, function (err, results, fields) {
-        if (err) throw err;
-    });
-}
-
-function createProject(creatorId, iconId, name, description) {
-    var sql = "INSERT INTO Project (id, creatorId, iconId, name, description, creationDate) VALUES (?, ?, ?, ?, ?, ?);";
-    var values = [uuidv4, creatorId, iconId, name, description, this.date];
-    conn.query(sql, values, function (err, results, fields) {
-        if (err) throw err;
-    });
-}
-
-function getIcon(projectId) {
-    var sql = "SELECT iconId FROM Project WHERE id == " + projectId;
-    conn.query(sql, function (err, results, fields) {
-        if (err) {
-            throw err;
-        } else {
-            send(result);
-        }
-    });
-}
-function setIcon(projectId, iconId) {
-    //TODO
-}
-function getName(projectId) {
-    var sql = "SELECT name FROM Project WHERE id == " + projectId;
-    conn.query(sql, function (err, results, fields) {
-        if (err) {
-            throw err;
-        } else {
-            send(result);
-        }
-    });
-}
-function getDescription(projectId) {
-    var sql = "SELECT name FROM Project WHERE id == " + projectId;
-    conn.query(sql, function (err, results, fields) {
-        if (err) {
-            throw err;
-        } else {
-            send(result);
-        }
-    });
-}
-function getCreationDate(projectId) {
-    var sql = "SELECT creationDate FROM Project WHERE id == " + projectId;
-    conn.query(sql, function (err, results, fields) {
-        if (err) {
-            throw err;
-        } else {
-            send(result);
-        }
-    });
-}
 
 
 
