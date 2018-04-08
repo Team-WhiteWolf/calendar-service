@@ -212,8 +212,13 @@ function handleMessage(error, receivedMessage) {
         return;
     }
 
-    processMessage(receivedMessage);
+    prozessMessage(recieveMessage);
     requestMessage();
 }
 
-function processMessage(message) {
+var message = {
+  body: 'Test message',
+  customProperties: {
+    testproperty: 'TestValue'
+  }
+};
